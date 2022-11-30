@@ -10,10 +10,14 @@ public class KeyCatcher extends JFrame implements KeyListener {
     private JLabel[] labels = new JLabel[0];
     private int catcher = 0;
 
+    private boolean flag = false;
+
+    private int labelsSize;
     public KeyCatcher(JTextField smfng, JLabel[] lbls) {
         this.txtf = smfng;
         this.labels = lbls;
         this.catcher = 0;
+        this.labelsSize = lbls.length;
     }
 
 //    void KeyCather(JTextField smfng, JLabel [] lbls){
@@ -32,6 +36,7 @@ public class KeyCatcher extends JFrame implements KeyListener {
         return this.catcher;
     }
 
+    public int getFlagValue(){ return (this.flag) ? 1 : 0;}
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -47,22 +52,27 @@ public class KeyCatcher extends JFrame implements KeyListener {
 
         //System.out.println(txtf.getText());
         //System.out.println(labels[catcher].getText());
-//        System.out.println(catcher == labels.length);
-        System.out.println("Hi");
-        System.out.println(txtf.getText());
-        //System.out.println(labels[catcher].getText());
-        if (catcher == labels.length){
-            System.out.println("Done");
-            //JOptionPane.showMessageDialog(BoxLayoutPanel.this,"Ля, КРАСАВА!");
-        }
-        else if (Objects.equals(Character.toString(txtf.getText().toCharArray()[catcher]), labels[catcher].getText())){
+//        if (Objects.equals(catcher, labels.length)){
+//            System.out.println("Done");
+//            //JOptionPane.showMessageDialog(BoxLayoutPanel.this,"Ля, КРАСАВА!");
+//        }
+//        else
+        if (Objects.equals(Character.toString(txtf.getText().toCharArray()[catcher]), labels[catcher].getText())){
             labels[catcher].setForeground(Color.GREEN);
             this.catcher +=1;
-
+            if (this.catcher == labelsSize){JOptionPane.showMessageDialog(txtf,
+                    "YRA!");}
         }
         else{
+
             labels[catcher].setForeground(Color.RED);
+            flag = true;
+            JOptionPane.showMessageDialog(txtf,
+                    "Введена лишняя буква",
+                    "Inane error",
+                    JOptionPane.ERROR_MESSAGE);
         }
+
 //        if( Objects.equals(Character.toString(txtf.getText().toCharArray()[catcher]), labels[catcher].getText())){
 //                labels[catcher].setForeground(Color.GREEN);
 //                this.catcher +=1;

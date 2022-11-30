@@ -21,13 +21,15 @@ public class BoxLayoutPanel extends JFrame {
 //        p2.add(new JButton("Выйти"));
         l1.setLayout(new BorderLayout());
         p2.add(l1);
-        JLabel[] labels = new JLabel[10];
+        //JLabel[] labels = new JLabel[10];
 //        JLabel lab1 = new JLabel("a");
 //        p2.add(lab1);
 //        p2.add(new JLabel("b"));
 //        p2.add(new JLabel("C"));
-        String str = "zhopka";
+//        String str = "zhopka";
+        String str = "papapapapapa";
         char [] charArr = str.toCharArray();
+        JLabel[] labels = new JLabel[charArr.length];
         int catcher = 0;
         for (int i = 0; i < charArr.length; i++){
             System.out.println(charArr[i]);
@@ -87,9 +89,7 @@ public class BoxLayoutPanel extends JFrame {
 //
 //            @Override
 //            public void keyReleased(KeyEvent e) {
-//                System.out.println("Hi");
-//                System.out.println(txtf.getText());
-//                //System.out.println(labels[catcher].getText());
+//
 //                if (catcher == labels.length){
 //                    System.out.println("Done");
 //                    //JOptionPane.showMessageDialog(BoxLayoutPanel.this,"Ля, КРАСАВА!");
@@ -101,6 +101,10 @@ public class BoxLayoutPanel extends JFrame {
 //                }
 //                else{
 //                    labels[catcher].setForeground(Color.RED);
+//                    JOptionPane.showMessageDialog(txtf,
+//                            "Введена лишняя буква",
+//                            "Inane error",
+//                            JOptionPane.ERROR_MESSAGE);
 //                }
 //            }
 //        });
@@ -112,7 +116,7 @@ public class BoxLayoutPanel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //txtf.setText("");
-                int len = kc.getCatcher();
+                int len = kc.getCatcher() + kc.getFlagValue();
                 for (int  i = 0; i < len;i++){
                     labels[i].setForeground(Color.BLACK);
                 }
