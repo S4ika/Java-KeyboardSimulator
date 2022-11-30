@@ -12,10 +12,12 @@ public class KeyCatcher extends JFrame implements KeyListener {
 
     private boolean flag = false;
 
+    private int labelsSize;
     public KeyCatcher(JTextField smfng, JLabel[] lbls) {
         this.txtf = smfng;
         this.labels = lbls;
         this.catcher = 0;
+        this.labelsSize = lbls.length;
     }
 
 //    void KeyCather(JTextField smfng, JLabel [] lbls){
@@ -58,7 +60,8 @@ public class KeyCatcher extends JFrame implements KeyListener {
         if (Objects.equals(Character.toString(txtf.getText().toCharArray()[catcher]), labels[catcher].getText())){
             labels[catcher].setForeground(Color.GREEN);
             this.catcher +=1;
-
+            if (this.catcher == labelsSize){JOptionPane.showMessageDialog(txtf,
+                    "YRA!");}
         }
         else{
 
@@ -69,6 +72,7 @@ public class KeyCatcher extends JFrame implements KeyListener {
                     "Inane error",
                     JOptionPane.ERROR_MESSAGE);
         }
+
 //        if( Objects.equals(Character.toString(txtf.getText().toCharArray()[catcher]), labels[catcher].getText())){
 //                labels[catcher].setForeground(Color.GREEN);
 //                this.catcher +=1;
